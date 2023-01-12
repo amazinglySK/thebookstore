@@ -5,7 +5,29 @@
 </script>
 
 <div class="card">
-    <img src={img} height = "100" alt="">
+    <img src={img} height = "200" alt="">
     <p>{item}</p>
-    <span>{status}</span>
+    <span class:stock = {status == "IN STOCK"}>{status}</span>
 </div>
+
+<style>
+
+    .stock {
+        color : #008F31;
+;
+    }
+
+    span {
+        font-weight: 700;
+        color : #CF3E3E;
+    }
+
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+    }
+</style>

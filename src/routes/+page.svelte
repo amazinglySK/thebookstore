@@ -6,30 +6,50 @@
 
 <Navbar />
 <main>
-    <Section title = {"Books 📖"}>
-        <p>Books thingies come here</p>
-        <div class="notebooks">
-            {#each Array(5) as _, index (index)}
-                <Card img = {"/nbk_trial.png"} item = {"Register"} status = {"IN STOCK"}/>
-            {/each}
+    <h1>Books 📖</h1>
+    <div class="container">
+        <div class="notebook-section">
+            <h2>Notebooks</h2>
+            <div class="notebooks">
+                {#each Array(5) as _, index (index)}
+                    <Card img = {"/nbk_trial.png"} item = {"Register"} status = {"IN STOCK"}/>
+                {/each}
+            </div>
         </div>
-        <div class="textbook"></div>
-    </Section>
-    <Section title = {"Uniform 👔"}>
-        <p>Uniform thingies come here</p>   
-    </Section>
+        <div class="textbook-section">
+            <h2>Textbooks</h2>
+            <div class="textbooks">
+                {#each Array(5) as _, index (index)}
+                    <Card img = {"/tbk_trial.png"} item = {"Physics"} status = {"IN STOCK"}/>
+                {/each}
+            </div>
+        </div>
+    </div>
+    <h1>Uniform 👔</h1>
+    <div class="container">
+        <div class="white-uniform">
+            <h2>White uniform</h2>
+            <div class="uniforms">
+                {#each Array(5) as _, index (index)}
+                    <Card img = {"/uni_trial.png"} item = {"Physics"} status = {"IN STOCK"}/>
+                {/each}
+            </div>
+        </div> 
+    </div>
 </main>
 
 <style>
     main {
         width: 90%;
-        margin: auto;
+        margin: 2rem auto;
     }
-    .notebooks {
+    .notebooks, .textbooks, .uniforms{
         display: grid;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 0.5rem;
-
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 5rem;
+        
+    }
+    .notebook-section, .textbook-section, .white-uniform {
+        margin-left: 3rem;
     }
 </style>    
