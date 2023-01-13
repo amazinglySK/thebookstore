@@ -1,6 +1,6 @@
 # thebookstore
 
-A big idea with a huge utility created by the students for the school.
+A Big Idea with a vision to solve a genuine difficulty faced by fellow students with an innovative solution created by the students for the school.
 
 ## Technologies used
 
