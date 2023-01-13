@@ -1,8 +1,35 @@
 <script>
     export let title;
-</script>
+    export let iterable;
+    export let img;
 
-<h1>{title}</h1>
+    import Card from "./Card.svelte";
+</script>
 <div class = "container">
-    <slot></slot>
+    <h2>{title}</h2>
+    <div class="sub">
+        {#each iterable as _, index (index)}
+            <Card img={img} item={'Register'} status={'IN STOCK'} />
+        {/each}
+    </div>
 </div>
+
+<style>
+    .container {
+		margin-left: 3rem;
+		margin-top: 3em;
+	}
+
+    .sub {
+        gap: 4rem;
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+    }
+
+    .sub::-webkit-scrollbar {
+        display: none;
+    }
+
+
+</style> 
