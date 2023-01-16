@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import ItemModel from "./ItemModel";
+const mongoose = require("mongoose")
+const ItemModel = require("./ItemModel")
 
 const TextbookSchema = new mongoose.Schema({
     classes : {type : Array, required : false},
@@ -7,4 +7,4 @@ const TextbookSchema = new mongoose.Schema({
 })
 
 
-export default mongoose.model("Textbooks", TextbookSchema)
+module.exports = ItemModel.discriminator("Textbooks", TextbookSchema, {discriminatorKey : "_type"})
