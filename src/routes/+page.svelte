@@ -1,10 +1,25 @@
 <script>
+	import { onMount } from 'svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import Section from '../components/Section.svelte';
 
-    export let textbooks;
-    export let notebooks;
-    export let uniforms;
+    import Uniform from "../models/UniformModel";
+    import Textbook from "../models/TextbookModel";
+    import Notebook from "../models/NotebookModel";
+    
+    let textbooks = [];
+    let notebooks = [];
+    let uniforms = [];
+
+    onMount(async () => {
+        uniforms = await Uniform.find()
+        textbooks = await Textbook.find()
+        notebooks = await Notebook.find()
+
+        console.log(uniforms)
+        console.log(textbooks)
+        console.log(notebooks)
+    })
 </script>
 
 <Navbar />
