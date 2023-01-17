@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
-const ItemSchema = new mongoose.Schema({
+export const ItemSchema = new mongoose.Schema({
     name : String,
     in_stock : Boolean,
 }, {
@@ -8,4 +8,5 @@ const ItemSchema = new mongoose.Schema({
     discriminatorKey : "_type",
 })
 
-module.exports = mongoose.Model("Items", ItemSchema)
+const ItemModel = mongoose.model("Items", ItemSchema)
+export default {ItemModel}

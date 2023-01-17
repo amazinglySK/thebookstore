@@ -1,9 +1,9 @@
-const mongoose = require("mongoose")
-const ItemModel = require("./ItemModel")
+import mongoose from "mongoose"
+import {ItemSchema} from "./ItemModel"
 
 const UniformSchema = new mongoose.Schema({
     sizes : {type : Array, required : false},
     prices : {type : Array, required : false},
 });
 
-module.exports = ItemModel.discriminator("Uniform", UniformSchema, { discriminatorKey : "_type" });
+export default ItemSchema.discriminator("Uniform", UniformSchema, { discriminatorKey : "_type" });
