@@ -1,10 +1,11 @@
 import mongoose from "mongoose"
-import {ItemSchema} from "./ItemModel"
 
 const TextbookSchema = new mongoose.Schema({
-    classes : {type : Array, required : false},
-    prices : {type : Array, required : false},
-})
+    name: String,
+    variations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Variation" }],
+    general_in_stock: Boolean,
+});
 
+const TextbookModel = mongoose.model("Textbooks", TextbookSchema)
 
-export default ItemSchema.discriminator("Textbook", TextbookSchema, {discriminatorKey : "_type"})
+export default { TextbookModel }

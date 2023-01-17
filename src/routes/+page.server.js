@@ -1,14 +1,14 @@
 import { mongoConn } from "../lib/dbFuncs"
-import Textbook from "../models/TextbookModel"
+import { UniformModel } from "../models/UniformModel";
 
-export default async function load(){
+export default async function load() {
     mongoConn()
 
-    let textbooks = await Textbook.find()
-    console.log(textbooks)
+    let uniforms = await UniformModel.find()
+    console.log(uniforms)
 
     return {
-        textbooks
+        uniforms
     }
 }
 

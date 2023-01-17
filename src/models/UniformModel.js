@@ -1,9 +1,9 @@
 import mongoose from "mongoose"
-import {ItemSchema} from "./ItemModel"
 
 const UniformSchema = new mongoose.Schema({
-    sizes : {type : Array, required : false},
-    prices : {type : Array, required : false},
+    name: String,
+    variations: [{ type: mongoose.Schema.Types.ObjectId, ref: "Variation" }],
+    general_in_stock: Boolean,
 });
 
-export default ItemSchema.discriminator("Uniform", UniformSchema, { discriminatorKey : "_type" });
+export const UniformModel = mongoose.model("Uniforms", UniformSchema)
