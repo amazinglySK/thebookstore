@@ -6,6 +6,6 @@ export const VariantSchema = new mongoose.Schema({
     in_stock: Boolean,
 })
 
-const Variant = mongoose.model("Variations", VariantSchema)
+const Variants = mongoose.models["Variants"] || mongoose.model("Variants", VariantSchema)
 
-export default Variant;
+export { Variants };

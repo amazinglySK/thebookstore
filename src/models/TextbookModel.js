@@ -6,6 +6,6 @@ const TextbookSchema = new mongoose.Schema({
     general_in_stock: Boolean,
 });
 
-const TextbookModel = mongoose.model("Textbooks", TextbookSchema)
+const TextbookModel = mongoose.models["Textbooks"] || mongoose.model("Textbooks", TextbookSchema)
 
-export default { TextbookModel }
+export { TextbookModel }

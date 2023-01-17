@@ -14,7 +14,6 @@
 
     .stock {
         color : #008F31;
-;
     }
 
     span {

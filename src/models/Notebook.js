@@ -6,6 +6,6 @@ const NotebookSchema = new mongoose.Schema({
     in_stock: Boolean,
 });
 
-const NotebookModel = mongoose.model("Uniforms", NotebookSchema)
+const NotebookModel = mongoose.models["Notebooks"] || mongoose.model("Notebooks", NotebookSchema)
 
-export default { NotebookModel }
+export { NotebookModel }
