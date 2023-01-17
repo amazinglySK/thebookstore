@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 const NotebookSchema = new mongoose.Schema({
     name: String,
     price: Number,
+    img_url : String,
     in_stock: Boolean,
 });
 
