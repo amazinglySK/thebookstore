@@ -5,7 +5,7 @@
 	</div>
 	<h1 class="hero">The Bookstore</h1>
 	<div class="right">
-		<a href="/products">Prodcuts</a>
+		<a href="/products">Products</a>
 		<a id="logo-link" href="https://www.dpssharjah.com" target="_blank" rel="noreferrer"
 			><img class="logo" src="/dps.png" alt="" /></a
 		>
@@ -17,7 +17,7 @@
 		border: 4px solid black;
 		padding: 20px;
 		font-weight: 800;
-		font-size: 2rem;
+		font-size: 2.5rem;
 	}
 	nav {
 		border: 4px solid black;
