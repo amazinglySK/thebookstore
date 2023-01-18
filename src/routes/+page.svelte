@@ -3,9 +3,6 @@
 	import Section from '../components/Section.svelte';
 
 	export let data;
-	let textbooks;
-	let notebooks;
-	// let uniforms;
 </script>
 
 <Navbar />
@@ -18,7 +15,7 @@
 			img="/nbk_trial.png"
 			mock={false}
 		/>
-		<Section title="Textbooks" iterable={textbooks || Array(15)} img="/tbk_trial.png" mock={true} />
+		<Section title="Textbooks" iterable={data.textbooks || Array(15)} img="/tbk_trial.png" mock={false} />
 	</div>
 	<h1>Uniform 👔</h1>
 	<div class="container">
