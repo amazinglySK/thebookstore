@@ -48,3 +48,21 @@ export const getUniById = async (id) => {
         img : uni["img_url"],
     }
 }
+
+export const getTbById = async (id) => {
+    let tb = await TextbookModel.findOne({uid : id})
+    return {
+        variations :tb["variations"],
+        name : tb["name"],
+        img : tb["img_url"],
+    }
+}
+
+export const getNbkById = async (id) => {
+    let nbk = await NotebookModel.findOne({uid : id})
+    return {
+        name : nbk["name"],
+        price : nbk["price"],
+        img : nbk["img_url"],
+    }
+}

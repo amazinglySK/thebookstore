@@ -8,7 +8,7 @@
 <main>
 	<div class="info">
 		<div class="photo">
-			<img src="/uni_trial.png" alt="" />
+			<img src={data.uniform.img} alt="" />
 		</div>
 		<div class="content">
 			<h1>{data.uniform.name}</h1>
