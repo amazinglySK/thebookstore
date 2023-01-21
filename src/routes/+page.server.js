@@ -1,5 +1,5 @@
 import { mongoConn, mongoDisconn } from "../lib/dbFuncs"
-import { getAllNotebookSummaries, getAllTextbookSummaries, getAllUniformSummaries } from "../lib/postFuncs";
+import { getAllNotebookSummaries, getAllTextbookSummaries, getAllUniformSummaries } from "../lib/itemFuncs";
 
 export async function load() {
     mongoConn()
@@ -7,8 +7,6 @@ export async function load() {
     let uniforms_data = await getAllUniformSummaries();
     let textbooks_data = await getAllTextbookSummaries()
     let notebooks_data = await getAllNotebookSummaries()
-
-    // mongoDisconn()
     return {
         uniforms : uniforms_data,
         notebooks : notebooks_data,

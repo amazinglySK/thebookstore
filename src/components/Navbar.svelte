@@ -1,6 +1,6 @@
 <nav>
 	<div class="left">
-		<a href="/home">Home</a>
+		<a href="/">Home</a>
 		<a href="/reserve">Reserve</a>
 	</div>
 	<h1 class="hero">The Bookstore</h1>

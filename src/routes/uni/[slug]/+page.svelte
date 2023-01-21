@@ -1,6 +1,7 @@
 <script>
-	import Navbar from '../../components/Navbar.svelte';
-	let uniforms;
+	import Navbar from '../../../components/Navbar.svelte';	
+    export let data;
+    let selected = data.uniform.variations[0];
 </script>
 
 <Navbar />
@@ -10,13 +11,12 @@
 			<img src="/uni_trial.png" alt="" />
 		</div>
 		<div class="content">
-			<h1>White Shirt</h1>
+			<h1>{data.uniform.name}</h1>
 			<label for="size">Choose size:</label>
-			<select name="size" id="size">
-				<option value="">32</option>
-				<option value="">36</option>
-				<option value="">40</option>
-				<option value="">42</option>
+			<select bind:value = {selected} name="size" id="size">
+                {#each data.uniform.variations as v, _}
+				    <option value={v}>{v.name}</option>
+                {/each}
 			</select>
 			<div>
 				<p>
@@ -25,7 +25,7 @@
 				</p>
 			</div>
 			<div class="prod-info">
-				<span class="price">AED 149.00</span>
+				<span class="price">AED {selected.price}</span>
 				<span><button>ADD TO CART</button></span>
 			</div>
 		</div>

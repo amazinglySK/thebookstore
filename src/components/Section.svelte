@@ -17,7 +17,7 @@
             {/each}
         {:else}
             {#each iterable as v, _}
-                <Card img = {v.img} item={v.name} status={v.in_stock ? 'IN STOCK' : 'OUT OF STOCK'} />
+                <Card img = {v.img} url = {v.url} item={v.name} status={v.in_stock ? 'IN STOCK' : 'OUT OF STOCK'} />
             {/each}
         {/if}
 	</div>

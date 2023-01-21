@@ -2,6 +2,7 @@ import mongoose from "mongoose"
 
 const UniformSchema = new mongoose.Schema({
     name: String,
+    uid : String,
     variations: [{ type : Object }],
     img_url : String,
     general_in_stock: Boolean,

@@ -4,6 +4,7 @@ const NotebookSchema = new mongoose.Schema({
     name: String,
     price: Number,
     img_url : String,
+    uid : String,
     in_stock: Boolean,
 });
 
