@@ -2,6 +2,18 @@
 	import Navbar from '../../../components/Navbar.svelte';	
     export let data;
     let selected = data.notebook;
+    let qty
+
+    function saveToCart(){
+        let cart = JSON.parse(localStorage.getItem("cart"))
+        if (cart == undefined) {
+            cart = []
+        }
+        selected.qty = qty
+        cart.push(selected)
+        console.log(cart)
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
 </script>
 
 <Navbar />
@@ -20,7 +32,10 @@
 			</div>
 			<div class="prod-info">
 				<span class="price">AED {selected.price}</span>
-				<span><button>ADD TO CART</button></span>
+                <div class = "det-groups">
+                    <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value = {qty}>
+                </div>
+				<span><button on:click={saveToCart}>ADD TO CART</button></span>
 			</div>
 		</div>
 	</div>
@@ -62,6 +77,10 @@
 
 	.prod-info {
 		margin-top: 10%;
+        display: flex;
+        width: max-content;
+        gap: 1rem;
+        align-items: baseline;
 	}
 
 	.price {
@@ -69,8 +88,17 @@
 		font-size: 1.25em;
 	}
 
+    .qty { 
+        height: 1rem;
+        width: 3rem;
+    }
+
+    .det-groups {
+        display: flex;
+        gap: .5rem;  
+    }
 	button {
-		width: 15%;
+		width: 9rem;
 		border-radius: 3em;
 		background-color: #67a465;
 		margin-left: 5%;

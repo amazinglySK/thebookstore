@@ -1,11 +1,11 @@
 <nav>
 	<div class="left">
 		<a href="/">Home</a>
-		<a href="/reserve">Reserve</a>
+		<a href="/cart">Cart</a>
 	</div>
 	<h1 class="hero">The Bookstore</h1>
 	<div class="right">
-		<a href="/products">Products</a>
+		<a href="/faqs">FAQs</a>
 		<a id="logo-link" href="https://www.dpssharjah.com" target="_blank" rel="noreferrer"
 			><img class="logo" src="/dps.png" alt="" /></a
 		>
