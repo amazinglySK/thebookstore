@@ -1,17 +1,26 @@
 <script>
     import Navbar from "../../components/Navbar.svelte";
     import CartCard from "../../components/CartCard.svelte";
+    import { cart } from "../stores";
+
+    let cartItems;
+    cart.subscribe(val => {
+        cartItems = val
+    })
+
+    $: total = cartItems.reduce((acc, curr) => acc + curr.price*curr.qty, 0)
 </script>
 
 <Navbar />
 <main>
     <div class="cart-container">
-        <CartCard img = {"nbk_trial.png"} name = "Register 200pgs" price = {75} qty = {1}/>
+        {#each cartItems as v, _}
+            <CartCard img = {v.img} name = {v.name} price = {v.price} qty = {v.qty}  bind:value = {v.qty}/>
+        {/each}
     </div>
     <div class="bill">
         <h1>TOTAL</h1>
-        <p>Subtotal : AED150</p>
-        <p>Status : IN STOCK</p>
+        <h1>AED {total}</h1>
         <button>RESERVE</button>
     </div>
 

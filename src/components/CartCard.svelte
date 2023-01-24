@@ -1,6 +1,6 @@
 <script>
     export let name
-    export let qty
+    export let value
     export let price
     export let img
 </script>
@@ -15,9 +15,12 @@
         <div class="prod-info">
             <span class="price">AED {price}</span>
             <div class = "qty-group">
-                <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value={qty}>
+                <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value={value}>
             </div>
         </div>
+        <button class="remove">
+            Remove
+        </button>
     </div>
 </div>
 

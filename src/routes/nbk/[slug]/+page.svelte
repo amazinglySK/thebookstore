@@ -1,19 +1,9 @@
 <script>
 	import Navbar from '../../../components/Navbar.svelte';	
+	import saveToCart from "../../../lib/cartFuncs"
     export let data;
     let selected = data.notebook;
-    let qty
-
-    function saveToCart(){
-        let cart = JSON.parse(localStorage.getItem("cart"))
-        if (cart == undefined) {
-            cart = []
-        }
-        selected.qty = qty
-        cart.push(selected)
-        console.log(cart)
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }
+    let qty = 1;
 </script>
 
 <Navbar />
@@ -35,7 +25,7 @@
                 <div class = "det-groups">
                     <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value = {qty}>
                 </div>
-				<span><button on:click={saveToCart}>ADD TO CART</button></span>
+				<span><button on:click={saveToCart(selected, qty, data.notebook.img)}>ADD TO CART</button></span>
 			</div>
 		</div>
 	</div>
