@@ -1,29 +1,25 @@
 <script>
 	import Navbar from '../../components/Navbar.svelte';
 	import CartCard from '../../components/CartCard.svelte';
-	import { cart } from '../stores';
-
-	let cartItems;
-	cart.subscribe((val) => {
-		cartItems = val;
-	});
+    import {cart} from "../../stores/cart"
 
 	function handleEvenṫ(event) {
-		$cart.splice(event.detail.idx, 1);
+        console.log("Bruh")
+        $cart.splice(event.detail.idx)
 	}
+    
+    $: total = $cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 
-	$: total = cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 </script>
 
 <Navbar />
 <main>
 	<div class="cart-container">
-		{#each cartItems as v, idx}
+		{#each $cart as v, idx}
 			<CartCard
 				img={v.img}
 				name={v.name}
 				price={v.price}
-				qty={v.qty}
 				{idx}
 				bind:value={v.qty}
 				on:remove={handleEvenṫ}

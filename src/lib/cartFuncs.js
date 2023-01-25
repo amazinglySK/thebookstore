@@ -1,7 +1,7 @@
-import { cart } from "../routes/stores"
+import { cart } from "../stores/cart"
 
 export default function saveToCart(selected, qty, img) {
     selected.qty = qty
     selected.img = img
-    cart.update(prev => [...prev, selected])
+    cart.set(prev => [...prev, selected])
 }
