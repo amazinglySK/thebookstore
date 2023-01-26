@@ -16,13 +16,13 @@
 		});
 	}
 
-    function sendQtyChangeEvent() {
-        console.log('Event sent');
+	function sendQtyChangeEvent() {
+		console.log('Event sent');
 		dispatch('qtychange', {
 			idx: idx,
-            qty: value
+			qty: value
 		});
-    }
+	}
 </script>
 
 <div class="cart-card">
@@ -40,7 +40,7 @@
 					id="qty"
 					class="qty"
 					bind:value
-                    on:change={sendQtyChangeEvent}
+					on:change={sendQtyChangeEvent}
 				/>
 			</div>
 		</div>
@@ -56,11 +56,11 @@
 		display: flex;
 		gap: 1rem;
 		margin: auto;
+		margin-top: 2rem;
 	}
 
 	.content {
 		font-size: 1.25em;
-		/* background-color: antiquewhite; */
 		padding: 10px;
 		width: 100%;
 		padding-left: 30px;
@@ -80,5 +80,16 @@
 	.qty {
 		height: 1rem;
 		width: 3rem;
+	}
+
+	button {
+		width: 6rem;
+		border-radius: 3em;
+		background-color: rgb(60, 60, 60);
+		color: white;
+		margin-top: 5%;
+		padding: 1em 1.5em;
+		border: none;
+		font-family: Josefin Sans, Verdana, sans-serif;
 	}
 </style>
