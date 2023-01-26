@@ -3,26 +3,44 @@
 	import CartCard from '../../components/CartCard.svelte';
     import {cart} from "../../stores/cart"
 
-	function handleEvenṫ(event) {
-        console.log("Bruh")
-        $cart.splice(event.detail.idx)
+    let cartItems;
+
+    cart.subscribe((val) => {
+        cartItems = val
+    })
+	function handleRemove(event) {
+        cart.update((prev) => {
+            prev.splice(event.detail.idx, 1)
+            return prev
+        })
 	}
+
+    function handleQtyChange(event) {
+        cart.update((prev) => {
+            prev[event.detail.idx].qty = event.detail.qty
+            return prev
+        })
+    }
     
-    $: total = $cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+    $: total = cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 
 </script>
 
 <Navbar />
 <main>
 	<div class="cart-container">
-		{#each $cart as v, idx}
+        {#if cartItems.length == 0}
+            <p>Your cart is empty</p>
+        {/if}
+		{#each cartItems as v, idx}
 			<CartCard
 				img={v.img}
 				name={v.name}
 				price={v.price}
 				{idx}
 				bind:value={v.qty}
-				on:remove={handleEvenṫ}
+				on:remove={handleRemove}
+                on:qtychange = {handleQtyChange}
 			/>
 		{/each}
 	</div>

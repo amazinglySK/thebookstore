@@ -9,12 +9,20 @@
 
 	const dispatch = createEventDispatcher();
 
-	function sendEvent() {
+	function sendRemoveEvent() {
 		console.log('Event sent');
 		dispatch('remove', {
 			idx: idx
 		});
 	}
+
+    function sendQtyChangeEvent() {
+        console.log('Event sent');
+		dispatch('qtychange', {
+			idx: idx,
+            qty: value
+		});
+    }
 </script>
 
 <div class="cart-card">
@@ -32,10 +40,11 @@
 					id="qty"
 					class="qty"
 					bind:value
+                    on:change={sendQtyChangeEvent}
 				/>
 			</div>
 		</div>
-		<button class="remove" on:click={sendEvent}> Remove </button>
+		<button class="remove" on:click={sendRemoveEvent}> Remove </button>
 	</div>
 </div>
 

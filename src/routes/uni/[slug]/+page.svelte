@@ -31,7 +31,7 @@
                 <div class = "det-groups">
                     <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value = {qty}>
                 </div>
-				<span><button on:click = {saveToCart(selected, qty, data.uniform.img)}>ADD TO CART</button></span>
+				<span><button on:click = {saveToCart(selected, qty, { img : data.uniform.img, name : `${data.uniform.name} size ${selected.name}`})}>ADD TO CART</button></span>
 			</div>
 		</div>
 	</div>
