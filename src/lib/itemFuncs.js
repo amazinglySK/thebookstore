@@ -64,5 +64,6 @@ export const getNbkById = async (id) => {
         name : nbk["name"],
         price : nbk["price"],
         img : nbk["img_url"],
+        in_stock : nbk["in_stock"]
     }
 }

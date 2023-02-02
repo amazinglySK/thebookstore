@@ -14,6 +14,7 @@
 		</div>
 		<div class="content">
 			<h1>{data.notebook.name}</h1>
+            <h2 class = "stat" class:outstock = {!selected.in_stock}>{selected.in_stock ? "IN STOCK" : "OUT OF STOCK"}</h2>
 			<div>
 				<p>
 					Registers are the official notebooks in DPS Sharjah for Physics, Chemistry, Biology, Math.
@@ -25,7 +26,7 @@
                 <div class = "det-groups">
                     <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value = {qty}>
                 </div>
-				<span><button on:click={saveToCart(selected, qty, data.notebook.img)}>ADD TO CART</button></span>
+				<span><button disabled = {!selected.in_stock} on:click={saveToCart(selected, qty, data.notebook.img)}>ADD TO CART</button></span>
 			</div>
 		</div>
 	</div>
@@ -64,6 +65,14 @@
 	img {
 		height: 88%;
 	}
+
+    .stat {
+        font-size: 1.5rem;
+        color: green;
+    }
+    .outstock {
+        color: red;
+    }
 
 	.prod-info {
 		margin-top: 10%;

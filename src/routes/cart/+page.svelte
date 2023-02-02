@@ -22,6 +22,26 @@
 		});
 	}
 
+    function generate(n) {
+        var add = 1, max = 12 - add;   // 12 is the min safe number Math.random() can generate without it starting to pad the end with zeros.   
+        
+        if ( n > max ) {
+            return generate(max) + generate(n - max);
+        }
+        
+        max        = Math.pow(10, n+add);
+        var min    = max/10; // Math.pow(10, n) basically
+        var number = Math.floor( Math.random() * (max - min + 1) ) + min;
+        
+        return ("" + number).substring(add); 
+    }
+
+    function reserveHandler() {
+        let code = generate(6)
+        localStorage.setItem("code", code)
+        window.location.href = "/receipt"
+    }
+
 	$: total = cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 </script>
 
@@ -47,7 +67,7 @@
 		<h1>TOTAL</h1>
 		<h1 class="sub" id="price">Subtotal: AED {total}</h1>
 		<h1 class="sub">Status: IN STOCK</h1>
-		<button>RESERVE</button>
+		<button disabled = {cartItems.length == 0} on:click={reserveHandler}>RESERVE</button>
 	</div>
 </main>
 

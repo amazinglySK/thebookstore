@@ -1,3 +1,14 @@
+<script>
+	import { cart } from "../../stores/cart";
+
+
+    let cartItems = []
+    cart.subscribe((val) => cartItems = val)
+
+    let total = cartItems.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+
+</script>
+
 <main>
     <div class="container">
         <div class="banner">
@@ -10,23 +21,19 @@
         <div class="res-number">
             <h3>Reservation Number</h3>
             <div class="res-no">
-                <span>0</span>
-                <span>1</span>
-                <span>5</span>
-                <span>8</span>
-                <span>9</span>
-                <span>0</span>
-
+                {#each Array(6) as _, idx}
+                    <span>{localStorage.getItem("code")[idx]}</span>
+                {/each}
             </div>
         </div>
         <div class="order">
             <h1>Reservation Details</h1>
-        <div class="product-line">
-            <p>1x Register 200 PG</p><span>AED 75</span>
-        </div>
-        <div class="product-line">
-            <p>3x Chemistry Gr11 TB</p><span>AED 40</span>
-        </div>
+            {#each cartItems as v, _}    
+            <div class="product-line">
+                <p><b>{v.qty}x</b> {v.name}</p><span>AED {v.price * v.qty}</span>
+            </div>
+            {/each}
+            <h2>Grand Total : AED {total}</h2>
         </div>
         <div class="footer">
             <p class = "contact">Contact 06-5441617</p>
@@ -69,14 +76,6 @@ main {
     font-size: 1.2rem;
 }
 
-.product-line {
-    width: 40%;
-    display: flex;
-    font-size: 1.2rem;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: -1rem;
-}
 .res-number { 
     grid-area: res-number; 
 }
@@ -92,6 +91,15 @@ main {
 
 .order { 
     grid-area: order; 
+}
+
+.product-line {
+    width: 40%;
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: -1rem;
 }
 
 .footer { 

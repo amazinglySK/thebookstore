@@ -14,6 +14,7 @@
 		</div>
 		<div class="content">
 			<h1>{data.textbook.name}</h1>
+            <h2 class = "stat" class:outstock = {!selected.in_stock}>{selected.in_stock ? "IN STOCK" : "OUT OF STOCK"}</h2>
 			<label for="size">Choose class:</label>
 			<select bind:value = {selected} name="size" id="size">
                 {#each data.textbook.variations as v, _}
@@ -31,7 +32,7 @@
                 <div class = "det-groups">
                     <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value = {qty}>
                 </div>
-				<span><button on:click = {saveToCart(selected, qty, { img : data.textbook.img, name : `${data.textbook.name} ${selected.name}`})}>ADD TO CART</button></span>
+				<span><button disabled = {!selected.in_stock} on:click = {saveToCart(selected, qty, { img : data.textbook.img, name : `${data.textbook.name} ${selected.name}`})}>ADD TO CART</button></span>
 			</div>
 		</div>
 	</div>
@@ -75,6 +76,14 @@
 		width: 10%;
 		padding: 3px;
 	}
+
+    .stat {
+        font-size: 1.5rem;
+        color: green;
+    }
+    .outstock {
+        color: red;
+    }
 
 	.prod-info {
 		margin-top: 10%;

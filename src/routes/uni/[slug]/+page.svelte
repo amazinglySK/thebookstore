@@ -13,11 +13,12 @@
 			<img src={data.uniform.img} alt="" />
 		</div>
 		<div class="content">
-			<h1>{data.uniform.name}</h1>
+            <h1>{data.uniform.name}</h1>
+            <h2 class = "stat" class:outstock = {!selected.in_stock}>{selected.in_stock ? "IN STOCK" : "OUT OF STOCK"}</h2>
 			<label for="size">Choose size:</label>
 			<select bind:value = {selected} name="size" id="size">
                 {#each data.uniform.variations as v, _}
-				    <option value={v}>{v.name}</option>
+                <option value={v}>{v.name}</option>
                 {/each}
 			</select>
 			<div>
@@ -31,7 +32,7 @@
                 <div class = "det-groups">
                     <label for = "qty">Qty</label><input type="number" name="qty" id="qty" class = "qty" bind:value = {qty}>
                 </div>
-				<span><button on:click = {saveToCart(selected, qty, { img : data.uniform.img, name : `${data.uniform.name} size ${selected.name}`})}>ADD TO CART</button></span>
+				<span><button disabled = {!selected.in_stock} on:click = {saveToCart(selected, qty, { img : data.uniform.img, name : `${data.uniform.name} size ${selected.name}`})}>ADD TO CART</button></span>
 			</div>
 		</div>
 	</div>
@@ -76,6 +77,13 @@
 		padding: 3px;
 	}
 
+    .stat {
+        font-size: 1.5rem;
+        color: green;
+    }
+    .outstock {
+        color: red;
+    }
     .prod-info {
 		margin-top: 10%;
         display: flex;
