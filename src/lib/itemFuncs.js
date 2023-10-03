@@ -21,7 +21,7 @@ export const getAllNotebookSummaries = async () => {
         return {
             name : v["name"], 
             img : v["img_url"], 
-            in_stock : v["general_in_stock"], 
+            in_stock : v["in_stock"], 
             url : `/nbk/${v["uid"]}`,
         }
     })
